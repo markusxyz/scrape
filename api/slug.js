@@ -23,7 +23,7 @@ export default async (req, res) => {
   
   const page = await browser.newPage();
   page.setUserAgent('Opera/9.80 (J2ME/MIDP; Opera Mini/5.1.21214/28.2725; U; ru) Presto/2.8.119 Version/11.10');
-  await page.goto(`https://m.youtube.com/${slug}/videos`);
+  await page.goto(`https://www.google.de`);
 
   let content = await page.content();
   var $ = cheerio.load(content);
@@ -33,11 +33,11 @@ export default async (req, res) => {
 
   let id = null;
   const isLive = $('body').exists('[data-style="LIVE"]');
-  if (isLive) {
+  /*if (isLive) {
     const url = $('ytm-compact-video-renderer .compact-media-item-image').attr('href');
     const arr = url.split('?v=');
     id = arr[1];
-  }
+  }*/
 
   await browser.close();
 
